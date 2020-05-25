@@ -1,12 +1,8 @@
-plugins {
-  id "com.gradle.plugin-publish" version "0.10.0"
-  id "java-gradle-plugin"
-}
-
+group = 'com.qmetry'
+version = '1.0'
 
 apply plugin: 'groovy'
 apply plugin: 'maven'
-
 
 dependencies 
 {
@@ -22,25 +18,54 @@ repositories
 {
     mavenLocal()
     mavenCentral()
-	jcenter()
 }
 
-group = 'com.qmetry'
-version = '1.3'
-
-gradlePlugin {
-  plugins {
-    qtmGradlePlugin{
-      id = 'com.qmetry.QTMGradlePlugin'
-	  description = 'Ship high quality products, faster by linking automated test results from Gradle to QMetry Test Management.'
-	  displayName = 'QMetry Test Management Plugin'
-      implementationClass = 'com.qmetry.QTMGradlePlugin'
-    }
-  }
+//Gradle Publishing Plugin
+buildscript 
+{
+	repositories 
+	{
+		maven 
+		{
+		  url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies 
+	{
+		classpath "com.gradle.publish:plugin-publish-plugin:0.9.10"
+	}
 }
 
-pluginBundle {
-  website = 'https://www.qmetry.com/'
-  vcsUrl = 'https://github.com/qmetry/qmetry-test-management-gradle-plugin.git'
-  tags = ['test', 'automation', 'qmetry', 'qtm']
+apply plugin: "com.gradle.plugin-publish"
+
+dependencies 
+{
+	compile gradleApi()
 }
+
+pluginBundle 
+{
+	website = 'https://www.qmetry.com/'
+	vcsUrl = 'https://github.com/qmetry/qmetry-test-management-gradle-plugin.git'
+
+	plugins 
+	{
+		greetingsPlugin 
+		{
+			id = 'com.qmetry.qtmgradleplugin'
+			displayName = 'QMetry Test Management Plugin'
+			description = 'Ship high quality products, faster by linking automated test results from Gradle to QMetry Test Management.'
+			tags = ['test', 'automation', 'qmetry']
+			version = '1.0'
+		}
+	}
+  
+	mavenCoordinates 
+	{
+		groupId = "com.qmetry"
+		artifactId = "qtmgradleplugin"
+		version = "1.0"
+	}
+}
+
+
