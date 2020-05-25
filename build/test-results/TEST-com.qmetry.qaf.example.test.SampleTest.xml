@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.qmetry.qaf.example.test.SampleTest" tests="1" skipped="1" failures="0" errors="0" timestamp="2020-05-20T04:49:12" hostname="Q043" time="0.012">
+  <properties/>
+  <testcase name="testGoogleSearch" classname="com.qmetry.qaf.example.test.SampleTest" time="0.012">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[[QAFTestBase] - Initializing Driver...browser_str:chromeDriver,base_url:http://www.google.com/,sel_server:localhost,port:4444
+[UiDriverFactory] - Driver: chromeDriver
+[ChromeDriverHelper] - Please set webdriver.chrome.driver property properly.
+]]></system-out>
+  <system-err><![CDATA[Unable to create driver instance in 1st attempt with retry timeout of 0 seconds. You can check/set value of 'driver.init.retry.timeout' appropriately to set retry timeout on driver initialization failure.Unable to Create Driver Instance for chrome: Driver file not exist.
+]]></system-err>
+</testsuite>
